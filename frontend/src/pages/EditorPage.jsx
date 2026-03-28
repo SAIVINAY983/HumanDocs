@@ -103,7 +103,8 @@ const EditorPage = () => {
 
     // Setup Socket & Join Room
     useEffect(() => {
-        const s = io('/');
+        const SOCKET_URL = import.meta.env.VITE_API_URL ? import.meta.env.VITE_API_URL.replace('/api', '') : 'http://localhost:5001';
+        const s = io(SOCKET_URL);
         setSocket(s);
 
         if (docId) {
