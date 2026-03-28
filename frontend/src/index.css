@@ -1,0 +1,57 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  font-family: 'Outfit', 'Inter', system-ui, Avenir, Helvetica, Arial, sans-serif;
+  background-color: #fafaf9;
+  --primary: #6366f1;
+  --secondary: #fb7185;
+  --accent: #10b981;
+}
+
+body {
+  margin: 0;
+  display: block;
+  min-width: 320px;
+  min-height: 100vh;
+  color: #1f2937;
+}
+
+#root {
+  width: 100%;
+}
+
+@layer components {
+  .glass {
+    @apply bg-white/80 backdrop-blur-xl border border-white/40 shadow-premium;
+  }
+  
+  .bg-premium {
+    background: linear-gradient(135deg, #6366f1 0%, #8b5cf6 50%, #ec4899 100%);
+  }
+
+  .text-gradient {
+    @apply bg-clip-text text-transparent bg-gradient-to-r from-brand-primary to-brand-secondary;
+  }
+}
+
+.ql-editor {
+  min-height: 80vh;
+  background: white;
+  padding: 50px 100px !important;
+  box-shadow: 0 0 10px rgba(0,0,0,0.1);
+  margin: 20px auto;
+  max-width: 850px;
+}
+
+.ql-toolbar {
+  position: sticky;
+  top: 0;
+  z-index: 10;
+  background: white !important;
+  border: none !important;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+  display: flex;
+  justify-content: center;
+}

@@ -1,0 +1,30 @@
+﻿[dotenv@17.3.1] injecting env (7) from .env -- tip: ΓÜÖ∩╕Å  write to custom object with { processEnv: myObject }
+Server running on port 5001
+MongoDB connected
+node : Email Error: TypeError: 
+next is not a function
+At line:1 char:47
++ ...  -Name node | 
+Stop-Process -Force; node 
+index.js *>> server_debug.log
++                               
+         ~~~~~~~~~~~~~~~~~~~~~~~
+~~~~~~~~~~~
+    + CategoryInfo          : N 
+   otSpecified: (Email Error:   
+  Ty... not a function:String   
+ ) [], RemoteException
+    + FullyQualifiedErrorId : N 
+   ativeCommandError
+ 
+    at model.<anonymous> (C:\Use
+rs\saivi\OneDrive\Documents\Goog
+leDocs\backend\models\User.js:13
+:46)
+    at Kareem.execPre (C:\Users\
+saivi\OneDrive\Documents\GoogleD
+ocs\backend\node_modules\kareem\
+index.js:68:39)
+    at process.processTicksAndRe
+jections (node:internal/process/
+task_queues:105:5)
