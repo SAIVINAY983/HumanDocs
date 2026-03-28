@@ -37,8 +37,12 @@ io.on('connection', (socket) => {
     console.log('User connected:', socket.id);
 
     socket.on('join-document', (docId) => {
+        socket.docId = docId;
         socket.join(docId);
         console.log(`User ${socket.id} joined document: ${docId}`);
+        const room = io.sockets.adapter.rooms.get(docId);
+        const count = room ? room.size : 1;
+        io.to(docId).emit('collaborators-update', count);
     });
 
     socket.on('send-changes', (delta) => {
@@ -55,6 +59,11 @@ io.on('connection', (socket) => {
 
     socket.on('disconnect', () => {
         console.log('User disconnected:', socket.id);
+        if (socket.docId) {
+            const room = io.sockets.adapter.rooms.get(socket.docId);
+            const count = room ? room.size : 0;
+            io.to(socket.docId).emit('collaborators-update', count);
+        }
     });
 });
 

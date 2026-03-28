@@ -38,6 +38,7 @@ const EditorPage = () => {
     const [userRole, setUserRole] = useState('editor');
     const [publicAccess, setPublicAccess] = useState('none');
     const [activeMenu, setActiveMenu] = useState(null); // 'file', 'edit', 'view', 'insert', 'ai'
+    const [activeCollaborators, setActiveCollaborators] = useState(1);
     const [aiLoading, setAiLoading] = useState(false);
     const [showVersions, setShowVersions] = useState(false);
     const [versions, setVersions] = useState([]);
@@ -110,6 +111,10 @@ const EditorPage = () => {
         if (docId) {
             s.emit('join-document', docId);
         }
+        
+        s.on('collaborators-update', (count) => {
+            setActiveCollaborators(count);
+        });
 
         return () => {
             s.disconnect();
@@ -509,7 +514,7 @@ const EditorPage = () => {
                 <div className="flex items-center gap-4">
                     <button className="flex items-center gap-3 px-6 py-3 bg-brand-surface/50 text-indigo-900 border border-gray-100 rounded-2xl font-black hover:bg-indigo-50 transition-all">
                         <Users className="w-5 h-5 text-brand-primary" />
-                        <span className="text-sm">Collaborators ({doc?.collaborators?.length + 1})</span>
+                        <span className="text-sm">Collaborators ({Math.max(activeCollaborators, 1)})</span>
                     </button>
                     <button 
                         onClick={() => setShowShareModal(true)}
